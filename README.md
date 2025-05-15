@@ -1,11 +1,7 @@
 <!DREAMTRACKER>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Dream Tracker - Share your crypto dreams and aspirations">
-  <meta name="keywords" content="crypto, dreams, bitcoin, ethereum, solana, cryptocurrency">
-  <meta name="author" content="Dream Tracker">
+ 
   <meta property="og:title" content="Dream Tracker">
   <meta property="og:description" content="Share your dreams with us — and let's turn them into reality.">
   <meta property="og:type" content="website">
