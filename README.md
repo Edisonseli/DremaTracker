@@ -1,9 +1,5 @@
 <html lang="en">
 <head>
- 
-  <meta property="og:title" content="Dream Tracker">
-  <meta property="og:description" content="Share your dreams with us — and let's turn them into reality.">
-  <meta property="og:type" content="website">
   <title>Dream Tracker</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
   <style>
