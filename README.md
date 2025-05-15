@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dream Tracker - Share your crypto dreams and aspirations">
+  <meta name="keywords" content="crypto, dreams, bitcoin, ethereum, solana, cryptocurrency">
+  <meta name="author" content="Dream Tracker">
+  <meta property="og:title" content="Dream Tracker">
+  <meta property="og:description" content="Share your dreams with us — and let's turn them into reality.">
+  <meta property="og:type" content="website">
   <title>Dream Tracker</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
   <style>
     * {
       margin: 0;
@@ -51,6 +58,12 @@
       border-radius: 0.375rem;
       display: flex;
       flex-direction: column;
+      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+      transition: transform 0.2s ease;
+    }
+    
+    .qr-box:hover {
+      transform: translateY(-5px);
     }
     
     .qr-img {
@@ -64,7 +77,7 @@
       align-items: center;
       justify-content: space-between;
       margin-top: 0.5rem;
-      padding: 0 0.25rem;
+      padding: 0.25rem 0.5rem;
       background-color: #f3f4f6;
       border-radius: 0.25rem;
       font-size: 0.75rem;
@@ -80,13 +93,14 @@
     
     .copy-btn {
       margin-left: 0.25rem;
-      padding: 0.25rem;
+      padding: 0.25rem 0.5rem;
       background-color: black;
       color: white;
       border: none;
       border-radius: 0.25rem;
       cursor: pointer;
       font-size: 0.75rem;
+      transition: background-color 0.2s ease;
     }
     
     .copy-btn:hover {
@@ -109,6 +123,12 @@
       padding: 0.5rem 1rem;
       border-radius: 0.375rem;
       margin-top: 1rem;
+      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+      transition: transform 0.2s ease;
+    }
+    
+    .contact-box:hover {
+      transform: translateY(-2px);
     }
     
     .contact-icon {
@@ -123,11 +143,49 @@
     .contact-link {
       color: black;
       text-decoration: none;
+      transition: color 0.2s ease;
     }
     
     .contact-link:hover {
       color: #2563eb;
       text-decoration: underline;
+    }
+    
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #22d3ee;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .toast.show {
+      opacity: 1;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.75rem;
+      }
+      
+      .quote, .tagline {
+        font-size: 1rem;
+      }
+      
+      .qr-container {
+        gap: 1rem;
+      }
+      
+      .qr-img {
+        width: 150px;
+        height: 150px;
+      }
     }
   </style>
 </head>
@@ -137,7 +195,7 @@
   
   <div class="qr-container">
     <div class="qr-box">
-      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/solana_address_qr-fTcPZr2o32mdiGvFQ5T4SbiUl1Ri7Y.png" alt="Solana Address QR Code" class="qr-img">
+      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/solana_address_qr-fTcPZr2o32mdiGvFQ5T4SbiUl1Ri7Y.png" alt="Bitcoin QR Code" class="qr-img">
       <div class="address-container">
         <span class="address">bc1pyvlw67ewr8pvx22y25tgt5emwrcffmvtqpnajqpatp6xzzxsdawssccsgz</span>
         <button class="copy-btn" onclick="copyToClipboard('bc1pyvlw67ewr8pvx22y25tgt5emwrcffmvtqpnajqpatp6xzzxsdawssccsgz')">Copy</button>
@@ -181,16 +239,37 @@
     <a href="https://www.tiktok.com/@dream.tracker" target="_blank" rel="noopener noreferrer" class="contact-link">dream.tracker</a>
   </div>
   
+  <div id="toast" class="toast">Copied to clipboard!</div>
+  
   <script>
     function copyToClipboard(text) {
       navigator.clipboard.writeText(text)
         .then(() => {
-          alert("Copied to clipboard!");
+          const toast = document.getElementById('toast');
+          toast.classList.add('show');
+          setTimeout(() => {
+            toast.classList.remove('show');
+          }, 2000);
         })
         .catch(err => {
           console.error('Failed to copy: ', err);
+          alert("Failed to copy. Please try again.");
         });
     }
+    
+    // Preload images to ensure they display properly
+    window.addEventListener('load', function() {
+      const images = [
+        'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/solana_address_qr-fTcPZr2o32mdiGvFQ5T4SbiUl1Ri7Y.png',
+        'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sol-KeLIZHrlVe4CaB86AUITBsZfCX1TUx.jpeg',
+        'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ethe-gIFifAkyy883qaNzE6EEcAFRFlHMAc.jpeg'
+      ];
+      
+      images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+    });
   </script>
 </body>
 </html>
